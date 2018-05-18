@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvWave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffc"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="波浪动画" />
+
+    <TextView
+        android:id="@+id/tvShop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ccf"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="购物车" />
+
+    <TextView
+        android:id="@+id/tvPraise"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffc"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="点赞" />
+
+    <TextView
+        android:id="@+id/tvBubble"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ccf"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="气泡" />
+
+    <TextView
+        android:id="@+id/tvLocationMap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffc"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="坐标系" />
+</LinearLayout>
