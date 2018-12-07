@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.vivian.bezierview.scroller.ScrollerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffc"
+    android:id="@+id/llMain"
+    tools:context=".scroller.ScrollerActivity">
+    <Button
+        android:layout_width="match_parent"
+        android:background="#ccfc"
+        android:layout_height="100dp"
+        android:text="This is first child view"/>
+
+    <Button
+        android:background="#ccfc"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="This is second child view"/>
+
+    <Button
+        android:background="#ccfc"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="This is third child view"/>
+</com.vivian.bezierview.scroller.ScrollerLayout>

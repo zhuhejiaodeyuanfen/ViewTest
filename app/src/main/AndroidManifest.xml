@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.vivian.bezierview">
 
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="false"
@@ -9,21 +11,34 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/No.SwipeBack.Transparent.Theme">
+        <activity android:name=".Main2Activity">
+
+        </activity>
+        <activity android:name=".wave.WaveActivity"
+          >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WaveActivity" />
         <activity android:name=".shop.ShopActivity" />
         <activity android:name=".praise.PraiseActivity" />
         <activity
             android:name=".bubble.BubbleActivity"
-            android:hardwareAccelerated="false" />
-        <activity android:name=".locatemap.LocateMapActivity"></activity>
+            android:hardwareAccelerated="false"
+            android:screenOrientation="portrait" />
+        <activity android:name=".locatemap.LocateMapActivity" />
+        <activity android:name=".pathmeasure.PathMeasureActivity" />
+        <activity android:name=".viewmeasure.ViewMeasureActivity" />
+        <activity android:name=".scroller.ScrollerActivity" />
+        <activity android:name=".money.MoneyActivity" />
+        <activity android:name=".matrix.MatrixActivity" />
+        <activity android:name=".fragment.FragmentActivity"></activity>
+        <activity android:name=".IncludeActivity" />
+        <activity android:name=".fragment.ListViewActivity" />
+        <activity android:name=".handler.HandlerActivity"></activity>
     </application>
 
 </manifest>

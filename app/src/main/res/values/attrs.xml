@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="myCustomerView">
+        <attr name="text" format="string" />
+        <attr name="textColor" format="color" />
+        <attr name="textSize" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="WatchView">
+
+        <attr name="watchRadius" format="dimension" />//表盘半径
+        <attr name="watchPadding" format="dimension" />//表盘相对控件边框距离
+        <attr name="watchScalePadding" format="dimension" />
+        //刻度相对表盘距离
+        <attr name="watchScaleColor" format="color|dimension" />
+        //常规刻度颜色
+        <attr name="watchScaleLength" format="dimension|reference" />
+        //常规刻度长度
+
+        <attr name="watchHourScaleColor" format="color|dimension" />
+        //整点刻度颜色
+        <attr name="watchHourScaleLength" format="dimension|reference" />
+        //整点刻度长度
+        <attr name="hourPointColor" format="color|reference" />
+        //时针颜色
+        <attr name="hourPointLength" format="dimension|reference" />
+        //时针长度
+        <attr name="minutePointColor" format="color|reference" />
+        //分针颜色
+        <attr name="minutePointLength" format="dimension|reference" />
+        //分针长度
+        <attr name="secondPointColor" format="color|reference" />
+        //秒针颜色
+        <attr name="secondPointLength" format="dimension|reference" />
+        //秒针长度
+        <attr name="timeTextSize" format="dimension|reference" />
+        //表盘字体大小
+        <attr name="timeTextColor" format="color|reference" />
+        //表盘字体颜色
+
+    </declare-styleable>
+</resources>

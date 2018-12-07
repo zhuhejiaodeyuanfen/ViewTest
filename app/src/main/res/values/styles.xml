@@ -8,4 +8,31 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="MyAppTheme_1" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="textColor">@color/colorAccent</item>
+        <item name="text">第一种默认值</item>
+        <item name="textSize">10sp</item>
+    </style>
+
+    <style name="MyAppTheme_2" >
+        <item name="textColor">@color/colorPrimary</item>
+        <item name="text">第二默认值</item>
+        <item name="textSize">5sp</item>
+    </style>
+
+    <style name="BaseAppTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="No.SwipeBack.Transparent.Theme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
 </resources>

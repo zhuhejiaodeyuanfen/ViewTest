@@ -1,10 +1,15 @@
 package com.vivian.bezierview;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
 
 import com.vivian.bezierview.bubble.BubbleActivity;
@@ -12,14 +17,12 @@ import com.vivian.bezierview.locatemap.LocateMapActivity;
 import com.vivian.bezierview.matrix.MatrixActivity;
 import com.vivian.bezierview.money.MoneyActivity;
 import com.vivian.bezierview.pathmeasure.PathMeasureActivity;
-import com.vivian.bezierview.praise.PraiseActivity;
 import com.vivian.bezierview.reflection.GetRun;
 import com.vivian.bezierview.reflection.Reflection;
 import com.vivian.bezierview.reflection.RunTest;
 import com.vivian.bezierview.scroller.ScrollerActivity;
-import com.vivian.bezierview.shop.ShopActivity;
+import com.vivian.bezierview.systembar.SystemBarUtils;
 import com.vivian.bezierview.viewmeasure.ViewMeasureActivity;
-import com.vivian.bezierview.wave.WaveActivity;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -41,16 +44,27 @@ import javax.net.ssl.X509TrustManager;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 
-public class MainActivity extends AppCompatActivity {
+public class Main2Activity extends Activity {
     private TextView tvWave, tvShop, tvPraise,
             tvBubble, tvLocationMap, tvPathMeasure, tvViewMeasure, tvScroller, tvMoney, tvMatrix, tvHandler;
+    private View window;
 
-    public static final String TAG = MainActivity.class.getName();
+    public static final String TAG = Main2Activity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        SystemBarUtils.lightStatusBar(this, Color.TRANSPARENT);
+        setContentView(R.layout.activity_test);
+
+        Intent[] intents = new Intent[2];
+        intents[0] =new  Intent(Main2Activity.this, MoneyActivity.class);
+        intents[1] = new Intent(Main2Activity.this, MatrixActivity.class);
+
+        startActivities(intents);
+
+
+        finish();
         doConnect();
         tvWave = findViewById(R.id.tvWave);
         tvShop = findViewById(R.id.tvShop);
@@ -63,6 +77,9 @@ public class MainActivity extends AppCompatActivity {
         tvMoney = findViewById(R.id.tvMoney);
         tvMatrix = findViewById(R.id.tvMatrix);
         tvHandler = findViewById(R.id.tvHandler);
+        rlChildApp=findViewById(R.id.rlChildApp);
+        rlChildAppBack=findViewById(R.id.rlChildAppBack);
+        window=findViewById(R.id.window);
         Reflection.getSth();
         GetRun getRun = new GetRun(new RunTest() {
             @Override
@@ -79,90 +96,139 @@ public class MainActivity extends AppCompatActivity {
 
             }
         };
+        tvHandler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int[] location = new int[2];
+//            showAnimTv.getLocationInWindow(location); //获取在当前窗口内的绝对坐标
+                tvHandler.getLocationOnScreen(location);//获取在整个屏幕内的绝对坐标
+                TranslateAnimation translateAnimation = new TranslateAnimation(
+                        Animation.ABSOLUTE, location[0],
+                        Animation.ABSOLUTE, tvHandler.getX(),
+
+                        Animation.ABSOLUTE, location[1],
+                        Animation.ABSOLUTE, tvHandler.getY());
+                translateAnimation.setDuration(2000);//动画执行时间
+                translateAnimation.setFillAfter(false);//动画执行完成后保持状态
+                //执行动画
+                tvMatrix.setX(tvWave.getPivotX());
+                tvMatrix.setY(tvWave.getPivotY());
+                tvMatrix.startAnimation(translateAnimation);
+
+            }
+        });
         tvWave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, WaveActivity.class);
-                intent.putExtra("name",100);
-                startActivity(intent);
+                showView(v);
             }
         });
         tvShop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MainActivity.this, ShopActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(Main2Activity.this, ShopActivity.class);
+//                startActivity(intent);
+                showView(v);
 
             }
         });
         tvPraise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, PraiseActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(Main2Activity.this, PraiseActivity.class);
+//                startActivity(intent);
+                showView(v);
             }
         });
         tvBubble.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, BubbleActivity.class);
+                Intent intent = new Intent(Main2Activity.this, BubbleActivity.class);
                 startActivity(intent);
             }
         });
         tvLocationMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LocateMapActivity.class);
+                Intent intent = new Intent(Main2Activity.this, LocateMapActivity.class);
                 startActivity(intent);
             }
         });
         tvPathMeasure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, PathMeasureActivity.class);
+                Intent intent = new Intent(Main2Activity.this, PathMeasureActivity.class);
                 startActivity(intent);
             }
         });
         tvViewMeasure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ViewMeasureActivity.class);
+                Intent intent = new Intent(Main2Activity.this, ViewMeasureActivity.class);
                 startActivity(intent);
             }
         });
         tvScroller.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ScrollerActivity.class);
+                Intent intent = new Intent(Main2Activity.this, ScrollerActivity.class);
                 startActivity(intent);
             }
         });
         tvMoney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MoneyActivity.class);
+                Intent intent = new Intent(Main2Activity.this, MoneyActivity.class);
                 startActivity(intent);
             }
         });
         tvMatrix.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MatrixActivity.class);
-                startActivity(intent);
+
+
+
+                //        获得TaskStackBuilder对象
+//                TaskStackBuilder stackBuilder = TaskStackBuilder.create(Main2Activity.this);
+//
+//                Intent firstIntent = new Intent(Main2Activity.this, MoneyActivity.class);
+//                Intent resultIntent = new Intent(Main2Activity.this, MatrixActivity.class);
+//
+//                //        addNextIntent()方法会添加Intent到任务的顶端，将当前app的Activity与另一app的Activity添加到一个由stackBuilder创建的新的任务中
+//                stackBuilder.addNextIntent(firstIntent);
+//                stackBuilder.addNextIntent(resultIntent);
+////        获取一个PendingIntent去启动stackBuilder所创建的新任务
+//                PendingIntent resultPendingIntent =stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+////        发送PendingIntent
+//                try {
+//                    resultPendingIntent.send();
+//                } catch (PendingIntent.CanceledException e) {
+//                    e.printStackTrace();
+//                }
             }
         });
 
-        tvHandler.setOnClickListener(new View.OnClickListener() {
+        rlChildApp.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, HandlerActivity.class);
-//                startActivity(intent);
+            public boolean onTouch(View v, MotionEvent event) {
+                rlChildApp.setVisibility(View.GONE);
+                return true;
+            }
+        });
+        rlChildApp.post(new Runnable() {
+            @Override
+            public void run() {
+                rlChildAppBack.getLocationOnScreen(locationDest);
+                rlChildApp.setVisibility(View.GONE);
             }
         });
 
 
     }
+
+    private int[] locationDest=new int[2];
 
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
@@ -235,14 +301,38 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    class ConnectThread extends Thread {
-        @Override
-        public void run() {
-            HttpURLConnection conn = null;
-            InputStream is = null;
-            try {
-                URL url = new URL("https://kyfw.12306.cn/otn/regist/init");
-                conn = (HttpURLConnection) url.openConnection();
+    private View rlChildApp,rlChildAppBack;
+
+    private void showView(final View v) {
+
+        int[] location = new int[2];
+        v.getLocationOnScreen(location);//获取在整个屏幕内的绝对坐标
+
+        //设置动画属性
+
+
+//        locations[0] = (float) (location[0] - location2[0]) / rlChildAppBackWidth;
+//        locations[1] = (float) (location[1]) / window.getHeight();
+        ScaleAnimation animation = new ScaleAnimation(0f, 1.0f, 0f, 1.0f, Animation.ABSOLUTE,
+                location[0]-locationDest[0]+v.getWidth()/2, Animation.ABSOLUTE, location[1]-locationDest[1]+v.getHeight()/2);
+
+
+        animation.setDuration(3000);// 设置动画持续时间
+        animation.setRepeatCount(0);// 设置重复次数
+        rlChildApp.setVisibility(View.VISIBLE);
+
+        rlChildAppBack.startAnimation(animation);
+    }
+
+
+        class ConnectThread extends Thread {
+            @Override
+            public void run() {
+                HttpURLConnection conn = null;
+                InputStream is = null;
+                try {
+                    URL url = new URL("https://kyfw.12306.cn/otn/regist/init");
+                    conn = (HttpURLConnection) url.openConnection();
 
 //
 //                //创建X.509格式的CertificateFactory
@@ -292,17 +382,17 @@ public class MainActivity extends AppCompatActivity {
 //                    }
 //                });
 
-                is = conn.getInputStream();
-                //将得到的InputStream转换为字符串
-                final String str = convertStreamToString(is);
-                Log.i(TAG, "收到的消息" + conn.getResponseCode()
-                        + "code码" + str);
+                    is = conn.getInputStream();
+                    //将得到的InputStream转换为字符串
+                    final String str = convertStreamToString(is);
+                    Log.i(TAG, "收到的消息" + conn.getResponseCode()
+                            + "code码" + str);
 
-            } catch (Exception e) {
-                e.printStackTrace();
-                Log.i(TAG, "收到的消息" + e.getMessage());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.i(TAG, "收到的消息" + e.getMessage());
 
+                }
             }
         }
     }
-}

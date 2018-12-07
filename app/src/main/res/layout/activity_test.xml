@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/window"
+    android:background="@color/colorPrimary"
+    android:clipChildren="true"
+    android:orientation="vertical"
+    tools:context=".matrix.MatrixActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+    >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="true"
+            android:orientation="vertical"
+            tools:context=".matrix.MatrixActivity">
+
+
+            <com.vivian.bezierview.pathmeasure.DashBoardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="第一种"
+                app:textColor="@android:color/holo_green_dark"
+                app:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvWave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffc"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="波浪动画" />
+
+
+            <TextView
+                android:id="@+id/tvShop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ccf"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="购物车" />
+
+            <TextView
+                android:id="@+id/tvPraise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffc"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="点赞" />
+
+            <TextView
+                android:id="@+id/tvBubble"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ccf"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="气泡" />
+
+            <TextView
+                android:id="@+id/tvLocationMap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffc"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="坐标系" />
+
+            <TextView
+                android:id="@+id/tvPathMeasure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ccf"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="路径绘制" />
+
+            <TextView
+                android:id="@+id/tvViewMeasure"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffc"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="view宽高测量" />
+
+            <TextView
+                android:id="@+id/tvScroller"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ccf"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Scroller测试" />
+
+            <TextView
+                android:id="@+id/tvMoney"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffc"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="金钱测量" />
+
+            <TextView
+                android:id="@+id/tvMatrix"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ccf"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="矩阵变换" />
+
+
+            <TextView
+                android:id="@+id/tvHandler"
+                android:layout_width="wrap_content"
+                android:layout_height="500dp"
+                android:background="#ccf"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="handler" />
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <ImageView
+        android:id="@+id/viewTop"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:src="@mipmap/iv_back_top" />
+
+    <RelativeLayout
+        android:id="@+id/rlChildApp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#7f000000"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:id="@+id/rlChildAppBack"
+            android:padding="15dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="#ffc"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvFolderName"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/gridAPPListFolder"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="测试文本展示内容"
+                android:layout_marginTop="8dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:scrollbars="none" />
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>
